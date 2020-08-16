@@ -1,1 +1,4 @@
-netifaces==0.10.9
+netifaces==0.10.9 
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
