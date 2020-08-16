@@ -11,6 +11,7 @@ By: Calacuda | MIT Licence
 import scan
 import notify
 import time
+import json
 
 
 def periodic_scan(wait_time):
@@ -21,17 +22,17 @@ def periodic_scan(wait_time):
     wait_time = the number of minuets between scans.
     """
     try:
-        open("database.json", "r")
+        database = json.loads(open("database.json", "r").read())
     except FileNotFoundError:
         print("please run the init.py script to create the database. then come back")
         exit()
     while True:
-        new_devices = scan.get_hosts()
+        new_devices = scan.get_hosts(database)
         if new_devices:
             # names = "\n > ".join(new_devices)
             notify.send_message(new_devices)
-        time.wait(wait_time * 60)
+        time.sleep(wait_time * 60)
 
 
 if __name__ == "__main__":
-    periodic_scan(20)
+    periodic_scan(1)

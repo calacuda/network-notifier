@@ -80,11 +80,11 @@ def Create_Service(client_secret_file, api_name, api_version, *scopes):
 
 def send_message(hosts, subject=SUBJECT, reciver=RECIVER):
     service = Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
-    names = "\n > ".join([hosts.get("name") for host in hosts])
+    names = "\n > ".join([host.get("name") for host in hosts])
     emailMsg = "There's a new device on your network:\n\n >  " + names
     messages = []
-    mimeMessage = MIMEMultipart()
     for email in reciver:
+        mimeMessage = MIMEMultipart()
         mimeMessage['to'] = email
         mimeMessage['subject'] = subject
         mimeMessage.attach(MIMEText(emailMsg, 'plain'))
@@ -96,4 +96,4 @@ def send_message(hosts, subject=SUBJECT, reciver=RECIVER):
 
 
 if __name__ == '__main__':
-    send_message("this is a drill")
+    send_message([{"name": "this is a drill"}])
