@@ -82,8 +82,8 @@ def get_hosts(database=()):
     """
     network_info = get_ip()
     ip = network_info.get("addr")
-    netmask = network_info.get("netmask")
-    broadcast = network_info.get("boardcast")
+    # netmask = network_info.get("netmask")
+    # broadcast = network_info.get("boardcast")
     hosts = scan(ip, database)
     return hosts
 

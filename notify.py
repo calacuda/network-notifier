@@ -78,9 +78,9 @@ def Create_Service(client_secret_file, api_name, api_version, *scopes):
         return None
 
 
-def send_message(hostname, subject=SUBJECT, reciver=RECIVER):
+def send_message(hostnames, subject=SUBJECT, reciver=RECIVER):
     service = Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
-    emailMsg = "There's a new device on your network:\n\n >  " + hostname
+    emailMsg = "There's a new device on your network:\n\n >  " + "\n > ".join(list(hostnames.values))
     messages = []
     mimeMessage = MIMEMultipart()
     for email in reciver:
