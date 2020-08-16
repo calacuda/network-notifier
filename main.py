@@ -35,4 +35,4 @@ def periodic_scan(wait_time):
 
 
 if __name__ == "__main__":
-    periodic_scan(1)
+    periodic_scan(20)
