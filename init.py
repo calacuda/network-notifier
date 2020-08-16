@@ -23,7 +23,7 @@ def get_whitelist(hosts):
     if selection.lower() == "all":
         whitelist = hosts
     else:
-        whitelist = [hosts[int(i)] for i in selection.split(", ")]
+        whitelist = [hosts[int(i) - 1] for i in selection.split(", ")]
     return whitelist
 
 
