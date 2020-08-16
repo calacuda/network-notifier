@@ -14,6 +14,11 @@ import time
 import json
 
 
+def get_database():
+    with open("database.json", "r").read() as database:
+        return json.loads(database)
+
+
 def periodic_scan(wait_time):
     """
     does a periodic scan of the network if any new device connects it will
@@ -22,11 +27,13 @@ def periodic_scan(wait_time):
     wait_time = the number of minuets between scans.
     """
     try:
-        database = json.loads(open("database.json", "r").read())
+        f = open("database.json", "r")
+        f.close()
     except FileNotFoundError:
         print("please run the init.py script to create the database. then come back")
         exit()
     while True:
+        database = get_database()
         new_devices = scan.get_hosts(database)
         if new_devices:
             # names = "\n > ".join(new_devices)
