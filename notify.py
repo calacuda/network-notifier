@@ -26,11 +26,19 @@ API_VERSION = 'v1'
 SCOPES = ['https://mail.google.com/']
 
 SUBJECT = "network compremised?"
-with open("tmp_alert_emails.txt", "r") as alert:
-    RECIVER = [email.strip() for email in alert.readlines()]
 
-with open("tmp_client_email.txt", "r") as client:
-    SENDER = client.readlines()[0]
+try:
+    with open("tmp_alert_emails.txt", "r") as alert:
+        RECIVER = [email.strip() for email in alert.readlines()]
+        
+    with open("tmp_client_email.txt", "r") as client:
+        SENDER = client.readlines()[0]
+except FileNotFoundError:
+    with open("alert_emails.txt", "r") as alerts:
+        RECIVER = [email.strip() for email in alerts.readlines()]
+        
+    with open("client_email.txt", "r") as client:
+        SENDER = client.readlines()[0]
 
 
 def Create_Service(client_secret_file, api_name, api_version, *scopes):
