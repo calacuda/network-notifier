@@ -15,8 +15,8 @@ import json
 
 
 def get_database():
-    with open("database.json", "r").read() as database:
-        return json.loads(database)
+    with open("database.json", "r") as database:
+        return json.loads(database.read())
 
 
 def periodic_scan(wait_time):
