@@ -46,5 +46,5 @@ $ screen
 $ python3 main.py
 ~~~
 
-If you determinded and or adventurous, you can even try to set up a system service. There's
+If you're determinded and or adventurous, you can even try to set up a system service. There's
 an idea
